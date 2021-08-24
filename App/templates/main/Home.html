@@ -1,0 +1,39 @@
+{% extends 'main/index.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-7 mt-4">
+    <div class="card mb-3 p-2" style="max-width: 540px;">
+      <div class="row g-0">
+        {% if user.is_authenticated %}
+          <div class="col-md-4">
+            <a href="{{ user.userprofile.image.url }}">
+              <img src="{{ user.userprofile.image.url }}" class="img-fluid rounded-start" width="150" alt="User Image">
+            </a>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ user.username }}</h5>
+              <p class="card-text"><small>{{ user.email }}</small></p>
+              <p class="card-text">
+                <a href="{% url 'App:Update' %}" class="text-decoration-none btn btn-outline-primary">Update<b>USER</b></a>
+              </p>
+            </div>
+          </div>
+        {% else %}
+          <span class="display-1">🤷<samp class="display-4 ms-1">USER is Not</samp></span>
+          <a href="{% url 'App:SignUp' %}" class="text-center text-decoration-none"><small><code>Register Now</code></small></a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+
+  </div>
+</div>
+
+
+
+{% endblock content %}

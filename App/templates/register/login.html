@@ -1,0 +1,20 @@
+{% extends 'register/index.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<div class="row mt-4">
+  <div class="col-md-7 m-auto">
+    <form class="" action="" method="post">
+      <a href="{% url 'App:Home' %}" class="btn btn-outline-secondary my-3">↰Back To Home</a>
+      {% csrf_token %}
+      {% bootstrap_form login_form %}
+      <div class="d-grid gap-2">
+        <button class="btn btn-outline-primary btn-sm" type="submit">LogIn</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+{% endblock content %}
